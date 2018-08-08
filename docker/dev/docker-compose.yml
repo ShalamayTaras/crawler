@@ -1,0 +1,28 @@
+version: '3'
+services:
+
+  # application (code)
+  app:
+    build:
+      context: ""
+      dockerfile: app.dockerfile
+    working_dir: /app
+    volumes:
+      - ${PROJECT_DIR}:/app
+    networks:
+      - backend
+
+  # http server
+  web:
+    build:
+      context: ""
+      dockerfile: web.dockerfile
+    working_dir: /app
+    networks:
+      - backend
+    ports:
+      - 777:80
+
+networks:
+  backend:
+    driver: "bridge"

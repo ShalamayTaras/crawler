@@ -1,0 +1,15 @@
+{
+    "name": "crawler",
+    "authors": [
+        {
+            "name": "Taras Shalamay",
+            "email": "taricksh@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Services\\": "src/Services"
+        }
+    }
+}
