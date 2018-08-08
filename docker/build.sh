@@ -13,7 +13,6 @@ fi
 
 
 if $ENV_DEV; then
-    cp "$path/.dev.env" "$project_dir/.env"
 
     printf "PROJECT_DIR=$project_dir" > "$path/dev/.env"
 
