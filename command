@@ -7,18 +7,10 @@ if ($argv === null ) {
     $argv = $_SERVER['argv'];
 }
 
-
-/** Remove from array executed filename */
-array_shift($argv);
-
-/** $argv[0] - now first argument it is url*/
-$result = ( new \Commands\BaseCommand() )->runCommand($argv[0]);
+/**
+ * $argv[0] - executed filename
+ * $argv[1] - first argument it is url
+ */
+$result = ( new \Commands\BaseCommand() )->runCommand($argv[1]);
 
 echo $result . PHP_EOL;
-//$pages = (new \Services\Pages($argv[0]));
-//$start = microtime(true);
-//$pages->loadPages();
-//$pages->sortPages();
-//
-//$long = microtime(true)- $start;
-//return $pages->getResult($long);
