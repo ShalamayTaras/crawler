@@ -53,10 +53,8 @@ class Pages
         }
 
         if (count(array_filter($this->pages, function ($page) {
-                return !is_null($page);
-            }))
-            !== count($this->pages)
-        ) {
+                return ! is_null($page);
+            })) !== count($this->pages)) {
             $this->depth++;
             $this->parsePages();
         }
