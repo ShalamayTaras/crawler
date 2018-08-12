@@ -6,7 +6,9 @@
             "email": "taricksh@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "squizlabs/php_codesniffer": "*"
+    },
     "autoload": {
         "psr-4": {
             "Services\\": "src/Services",
