@@ -10,7 +10,7 @@
     "autoload": {
         "psr-4": {
             "Services\\": "src/Services",
-            "Controllers\\": "src/Controllers",
+            "Commands\\": "src/Commands",
             "Interfaces\\": "src/Interfaces",
             "Exceptions\\": "src/Exceptions"
         }

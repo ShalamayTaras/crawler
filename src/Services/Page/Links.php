@@ -12,7 +12,7 @@ use Services\Url;
  */
 class Links
 {
-    CONST PATTERN = '/<a.*?href="(?P<links>[^"]*)".*?\/?>/                                                                                                   mi';
+    const PATTERN = '/<a.*?href="(?P<links>[^"]*)".*?\/?>/                                                                                                   mi';
 
     /**
      * @param string $pageData

@@ -16,7 +16,7 @@ class Url implements UrlInterface
     private $port;
     private $path;
     private $query;
-    CONST SEPARATOR = '://';
+    const SEPARATOR = '://';
 
     /**
      * Url constructor.

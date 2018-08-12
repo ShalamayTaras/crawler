@@ -1,6 +1,6 @@
 <?php declare( strict_types = 1 );
 
-namespace Controllers;
+namespace Commands;
 
 use Exceptions\BadUrlException;
 use Services\Pages;
@@ -10,7 +10,7 @@ use Services\Url;
  * Class BaseController
  * @package Controllers
  */
-class BaseController
+class BaseCommand
 {
 
     /**
@@ -46,4 +46,4 @@ class BaseController
         return 'Success';
 
     }
-   }
+}

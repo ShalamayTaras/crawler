@@ -8,9 +8,11 @@ if ($argv === null ) {
 }
 
 
+/** Remove from array executed filename */
 array_shift($argv);
 
-$result =  (new \Controllers\BaseController())->runCommand($argv[0]);
+/** $argv[0] - now first argument it is url*/
+$result = ( new \Commands\BaseCommand() )->runCommand($argv[0]);
 
 echo $result . PHP_EOL;
 //$pages = (new \Services\Pages($argv[0]));

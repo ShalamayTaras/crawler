@@ -8,7 +8,7 @@ namespace Services\Page;
  */
 class ImageTags
 {
-    private CONST PATTERN = '/<img(?P<img>)/mi';
+    private const PATTERN = '/<img(?P<img>)/mi';
 
     /**
      * @param string $pageData
