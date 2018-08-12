@@ -3,6 +3,7 @@
 namespace Services\Page;
 
 use Exceptions\BadUrlException;
+use Exceptions\CanNotGetContentException;
 use Services\Url;
 
 /**
@@ -24,10 +25,12 @@ class Loader
             return null;
         }
         $startTime = microtime(true);
-        $pageData  = $this->loadPage($pageUrl->toString());
 
-        if ($pageData === false)
+        try {
+            $pageData = $this->loadPage($pageUrl->toString());
+        } catch (CanNotGetContentException $exception) {
             return null;
+        }
 
         $loadTime = microtime(true) - $startTime;
         $imgCount = ImageTags::getImgCount($pageData);
@@ -45,10 +48,15 @@ class Loader
 
     /**
      * @param string $url
-     * @return null|string
+     * @return string
+     * @throws CanNotGetContentException
      */
-    public function loadPage (string $url) :?string
+    public function loadPage (string $url) : string
     {
-        return file_get_contents($url);
+        $content = @file_get_contents($url);
+        if ($content === false)
+            throw new CanNotGetContentException();
+
+        return $content;
     }
 }
