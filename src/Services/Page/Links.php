@@ -55,33 +55,32 @@ class Links
     /**
      * @param Url $url
      */
-    public static function preparePath (Url $url)
+    public static function preparePath (Url $url) : void
     {
+        if (! is_null($url->getPath())) {
+            if (strpos($url->getPath(), '/') !== 0)
+                $url->setPath('/' . $url->getPath());
 
-        if (strpos($url->getPath(), '/') !== 0)
-            $url->setPath('/' . $url->getPath());
-
-        if (strripos($url->getPath(), '/') === strlen($url->getPath()) - 1)
-            $url->setPath(substr($url->getPath(), 0, strlen($url->getPath()) - 1));
-
+            if (strripos($url->getPath(), '/') === strlen($url->getPath()) - 1)
+                $url->setPath(substr($url->getPath(), 0, strlen($url->getPath()) - 1));
+        }
     }
 
     /**
      * @param UrlInterface $url
      * @param UrlInterface $pageUrl
      */
-    public static function prepareHost (UrlInterface $url, UrlInterface $pageUrl)
+    public static function prepareHost (UrlInterface $url, UrlInterface $pageUrl) : void
     {
         if (is_null($url->getHost()))
             $url->setHost($pageUrl->getHost());
     }
 
-
     /**
      * @param UrlInterface $url
      * @param UrlInterface $pageUrl
      */
-    public static function prepareScheme (UrlInterface $url, UrlInterface $pageUrl)
+    public static function prepareScheme (UrlInterface $url, UrlInterface $pageUrl) : void
     {
         if (is_null($url->getScheme()))
             $url->setScheme($pageUrl->getScheme());

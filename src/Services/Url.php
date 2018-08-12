@@ -40,10 +40,6 @@ class Url implements UrlInterface
      */
     public function isValidate(): bool
     {
-        if (empty($this->getPath()))
-            return false;
-
-
         switch ($this->getScheme()) {
             case 'http':
             case 'https':

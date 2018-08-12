@@ -17,7 +17,7 @@ class BaseCommand
      * @param string $url
      * @return string
      */
-    public function runCommand(string $url)
+    public function runCommand (string $url) : string
     {
         try{
             $url = Url::make($url);
@@ -44,6 +44,5 @@ class BaseCommand
         $pages->getResult($workTime);
 
         return 'Success';
-
     }
 }

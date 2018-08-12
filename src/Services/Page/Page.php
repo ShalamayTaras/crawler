@@ -15,9 +15,9 @@ class Page
     private $links;
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getUrl()
+    public function getUrl () : string
     {
         return $this->url;
     }
@@ -26,7 +26,7 @@ class Page
      * @param mixed $url
      * @return $this
      */
-    public function setUrl(string $url) : Page
+    public function setUrl (string $url) : Page
     {
         $this->url = $url;
 
@@ -36,7 +36,7 @@ class Page
     /**
      * @return array
      */
-    public function toArray() : array
+    public function toArray () : array
     {
         return [
             $this->getUrl(),
@@ -48,9 +48,9 @@ class Page
     }
 
     /**
-     * @return mixed
+     * @return int|null
      */
-    public function getImgCount()
+    public function getImgCount () :?int
     {
         return $this->imgCount;
     }
@@ -59,7 +59,7 @@ class Page
      * @param mixed $imgCount
      * @return Page
      */
-    public function setImgCount($imgCount) : Page
+    public function setImgCount ($imgCount) : Page
     {
         $this->imgCount = $imgCount;
 
@@ -67,9 +67,9 @@ class Page
     }
 
     /**
-     * @return mixed
+     * @return int|null
      */
-    public function getDepth()
+    public function getDepth () :?int
     {
         return $this->depth;
     }
@@ -78,7 +78,7 @@ class Page
      * @param mixed $depth
      * @return Page
      */
-    public function setDepth(int $depth) : Page
+    public function setDepth (int $depth) : Page
     {
         $this->depth = $depth;
 
@@ -88,7 +88,7 @@ class Page
     /**
      * @return mixed
      */
-    public function getLoadTime()
+    public function getLoadTime () : ?float
     {
         return $this->loadTime;
     }
@@ -97,18 +97,17 @@ class Page
      * @param mixed $loadTime
      * @return Page
      */
-    public function setLoadTime(float $loadTime) : Page
+    public function setLoadTime (float $loadTime) : Page
     {
-        $this->loadTime =   round($loadTime, 2);
+        $this->loadTime = round($loadTime, 2);
 
         return $this;
     }
 
-
     /**
      * @return mixed
      */
-    public function getLinks() : array
+    public function getLinks () : array
     {
         return $this->links;
     }
@@ -117,7 +116,7 @@ class Page
      * @param mixed $links
      * @return $this
      */
-    public function setLinks(array $links)
+    public function setLinks (array $links) : Page
     {
         $this->links = $links;
 

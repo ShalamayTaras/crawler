@@ -30,7 +30,7 @@ class Pages
     /**
      * Parse page
      */
-    public function parsePages()
+    public function parsePages () : void
     {
         foreach ($this->pages as $link => $page) {
             if ($page === false || ! is_null($page)) {
@@ -38,7 +38,7 @@ class Pages
             }
             $page = (new Loader)->load($link, $this->depth);
 
-            if ($page === false) {
+            if (is_null($page)) {
                 $this->pages[$link] = false;
                 continue;
             }
@@ -62,7 +62,7 @@ class Pages
     /**
      * Sort pages by img count
      */
-    public function sortPages()
+    public function sortPages () : void
     {
         uasort($this->pages, function(Page $firstElement,Page $secondElement){
             return (int)$firstElement->getImgCount() <=> (int)$secondElement->getImgCount();
@@ -72,7 +72,7 @@ class Pages
     /**
      * Remove element which can not be parse
      */
-    public function filterPages()
+    public function filterPages () : void
     {
         $this->pages = array_filter($this->pages, function($element){
             return $element;

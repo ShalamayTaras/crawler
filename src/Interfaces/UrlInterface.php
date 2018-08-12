@@ -14,33 +14,37 @@ interface UrlInterface
      * @param string $url
      * @return UrlInterface|null
      */
-    public static function make(string $url): ?self;
+    public static function make (string $url) : ?self;
 
     /**
      * @return string
      */
-    public function toString(): string;
+    public function toString () : string;
 
     /**
      * @return null|string
      */
-    public function getHost(): ?string;
+    public function getHost () : ?string;
 
     /**
      * @return null|string
      */
-    public function getScheme(): ?string;
+    public function getScheme () : ?string;
 
     /**
      * @param string $scheme
      * @return mixed
      */
-    public function setScheme(string $scheme);
+    public function setScheme (string $scheme) : void;
 
     /**
      * @param string $host
      * @return mixed
      */
-    public function setHost(string $host);
+    public function setHost (string $host) : void;
 
+    /**
+     * @return bool
+     */
+    public function isValidate () : bool;
 }
