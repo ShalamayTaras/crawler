@@ -10,4 +10,5 @@ if $ENV_DEV; then
     && docker-compose -p $PROJECT_NAME_DEV up -d
 
     CONTAINER=$(docker ps -aqf "name=${PROJECT_NAME_DEV}_app")
+
 fi

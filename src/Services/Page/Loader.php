@@ -1,7 +1,8 @@
-<?php declare( strict_types = 1 );
+<?php declare(strict_types=1);
 
 namespace Services\Page;
 
+use Exceptions\BadUrlException;
 use Services\Url;
 
 /**
@@ -12,60 +13,42 @@ class Loader
 
     /**
      * @param string $url
-     * @return string
+     * @param int $depth
+     * @return bool|Page
      */
-    public function load (string $url) : string
+    public function load(string $url, int $depth)
     {
-        $link       = Url::make($url);
+        try {
+            $pageUrl = Url::make($url);
+        } catch (BadUrlException $e) {
+            return false;
+        }
+        $startTime = microtime(true);
+        $pageData  = $this->loadPage($pageUrl->toString());
 
-        $firstTime1 = microtime(true);
-        $pageData   = $this->loadPageFileGetContent($link->toString());
-        $long1      = microtime(true) - $firstTime1;
+        if ($pageData === false)
+            return false;
 
-        $firstTime = microtime(true);
-        $pageCurl  = $this->loadPageCurl($link->toString());
-        $long      = microtime(true) - $firstTime;
+        $loadTime = microtime(true) - $startTime;
+        $imgCount = ImageTags::getImgCount($pageData);
+        $links    = Links::getLinks($pageData, $pageUrl);
 
-        $imgCount     = ImageTags::getImgCount($pageData);
-        $imgCountCurl = ImageTags::getImgCount($pageCurl);
+        $page =(new Page())
+                ->setUrl($url)
+                ->setLoadTime($loadTime)
+                ->setImgCount($imgCount)
+                ->setDepth($depth)
+                ->setLinks(Links::filterLinks($links, $pageUrl->getHost()));
 
-
-        echo '<pre>';
-        var_dump($imgCount, $long1, $imgCountCurl, $long);
-        echo '</pre>';
-
-        exit(1);
-
-
-        return $pageData;
-    }
-
-    /**
-     * @param $url
-     * @return mixed
-     */
-    public function loadPageCurl (string $url)
-    {
-
-        $curl = curl_init();
-
-        curl_setopt($curl, CURLOPT_HEADER, 0);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curl, CURLOPT_URL, $url);
-
-        $data = curl_exec($curl);
-        curl_close($curl);
-
-        return $data;
+        return $page;
     }
 
     /**
      * @param string $url
      * @return bool|string
      */
-    public function loadPageFileGetContent (string $url)
+    public function loadPage(string $url)
     {
-        return file_get_contents($url);
+        return @file_get_contents($url);
     }
-
 }

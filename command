@@ -3,12 +3,20 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-if (null === $argv) {
+if ($argv === null ) {
     $argv = $_SERVER['argv'];
 }
 
 
 array_shift($argv);
 
+$result =  (new \Controllers\BaseController())->runCommand($argv[0]);
 
-return (new \Services\Page\Loader())->load($argv[0]);
+echo $result . PHP_EOL;
+//$pages = (new \Services\Pages($argv[0]));
+//$start = microtime(true);
+//$pages->loadPages();
+//$pages->sortPages();
+//
+//$long = microtime(true)- $start;
+//return $pages->getResult($long);

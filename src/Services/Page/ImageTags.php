@@ -1,8 +1,6 @@
 <?php declare( strict_types = 1 );
 
-
 namespace Services\Page;
-
 
 /**
  * Class ImageTag
@@ -10,7 +8,7 @@ namespace Services\Page;
  */
 class ImageTags
 {
-    private CONST PATTERN = '/<img(?P<img>).*\/?>/mi';
+    private CONST PATTERN = '/<img(?P<img>)/mi';
 
     /**
      * @param string $pageData
@@ -18,9 +16,9 @@ class ImageTags
      */
     public static function getImgCount (string $pageData) : int
     {
-        preg_match_all(self::PATTERN, $pageData, $links);
+        preg_match_all(self::PATTERN, $pageData, $result);
 
-        return count($links['img']);
+        return count($result['img']);
     }
 
 }

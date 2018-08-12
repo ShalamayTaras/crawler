@@ -2,7 +2,7 @@ version: '3'
 services:
 
   # application (code)
-  app:
+  php:
     build:
       context: ""
       dockerfile: app.dockerfile
@@ -13,7 +13,7 @@ services:
       - backend
 
   # http server
-  web:
+  nginx:
     build:
       context: ""
       dockerfile: web.dockerfile
