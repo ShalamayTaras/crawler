@@ -12,14 +12,14 @@ use Services\Url;
  */
 class Links
 {
-    const PATTERN = '/<a.*?href="(?P<links>[^"]*)".*?\/?>/                                                                                                   mi';
+    const PATTERN = '/<a.*?href="(?P<links>[^"]*)".*?\/?>/mi';
 
     /**
      * @param string $pageData
      * @param UrlInterface $pageUrl
      * @return array
      */
-    public static function getLinks (string $pageData, UrlInterface $pageUrl) : array
+    public static function getLinks(string $pageData, UrlInterface $pageUrl) : array
     {
         preg_match_all(self::PATTERN, $pageData, $result);
 
@@ -33,7 +33,7 @@ class Links
      * @param UrlInterface $pageUrl
      * @return array
      */
-    private static function prepareLinks (array $links, UrlInterface $pageUrl) : array
+    private static function prepareLinks(array $links, UrlInterface $pageUrl) : array
     {
         foreach ($links as $key => $link) {
             /** @var Url $url */
@@ -43,10 +43,11 @@ class Links
             self::prepareHost($url, $pageUrl);
             self::preparePath($url);
 
-            if (! $url->isValidate())
+            if (! $url->isValidate()) {
                 unset($links[ $key ]);
-            else
+            } else {
                 $links[ $key ] = $url->toString();
+            }
         }
 
         return $links;
@@ -55,14 +56,15 @@ class Links
     /**
      * @param Url $url
      */
-    public static function preparePath (Url $url) : void
+    public static function preparePath(Url $url) : void
     {
         if (! is_null($url->getPath())) {
-            if (strpos($url->getPath(), '/') !== 0)
+            if (strpos($url->getPath(), '/') !== 0) {
                 $url->setPath('/' . $url->getPath());
-
-            if (strripos($url->getPath(), '/') === strlen($url->getPath()) - 1)
+            }
+            if (strripos($url->getPath(), '/') === strlen($url->getPath()) - 1) {
                 $url->setPath(substr($url->getPath(), 0, strlen($url->getPath()) - 1));
+            }
         }
     }
 
@@ -70,20 +72,22 @@ class Links
      * @param UrlInterface $url
      * @param UrlInterface $pageUrl
      */
-    public static function prepareHost (UrlInterface $url, UrlInterface $pageUrl) : void
+    public static function prepareHost(UrlInterface $url, UrlInterface $pageUrl) : void
     {
-        if (is_null($url->getHost()))
+        if (is_null($url->getHost())) {
             $url->setHost($pageUrl->getHost());
+        }
     }
 
     /**
      * @param UrlInterface $url
      * @param UrlInterface $pageUrl
      */
-    public static function prepareScheme (UrlInterface $url, UrlInterface $pageUrl) : void
+    public static function prepareScheme(UrlInterface $url, UrlInterface $pageUrl) : void
     {
-        if (is_null($url->getScheme()))
+        if (is_null($url->getScheme())) {
             $url->setScheme($pageUrl->getScheme());
+        }
     }
 
     /**
@@ -91,9 +95,9 @@ class Links
      * @param string $siteDomain
      * @return array
      */
-    public static function filterLinks (array $links, string $siteDomain) : array
+    public static function filterLinks(array $links, string $siteDomain) : array
     {
-        return array_filter($links, function($link) use ($siteDomain) {
+        return array_filter($links, function ($link) use ($siteDomain) {
             try {
                 /** @var URL $url */
                 $url = Url::make($link);

@@ -12,7 +12,7 @@ class CanNotGetContentException extends \Exception
     /**
      * BadUrlException constructor.
      */
-    public function __construct ()
+    public function __construct()
     {
         parent::__construct('Can n\'t get content');
     }

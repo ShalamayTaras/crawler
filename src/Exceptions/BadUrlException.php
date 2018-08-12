@@ -8,7 +8,6 @@ namespace Exceptions;
  */
 class BadUrlException extends \Exception
 {
-
     /**
      * BadUrlException constructor.
      */

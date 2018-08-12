@@ -14,11 +14,10 @@ class ImageTags
      * @param string $pageData
      * @return int
      */
-    public static function getImgCount (string $pageData) : int
+    public static function getImgCount(string $pageData) : int
     {
         preg_match_all(self::PATTERN, $pageData, $result);
 
         return count($result['img']);
     }
-
 }

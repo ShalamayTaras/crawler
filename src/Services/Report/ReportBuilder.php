@@ -18,15 +18,16 @@ class ReportBuilder implements ReportBuilderInterface
     /**
      * @return string
      */
-    public function build () : string
+    public function build() : string
     {
         $this->buildStartTags();
         $this->buildTableHeader();
 
         foreach ($this->pages as $page) {
-            if ($page instanceof Page)
+            if ($page instanceof Page) {
                 /** @var PAGE $page */
                 $this->buildTr($page->toArray());
+            }
         }
 
         $this->buildTableFooter();
@@ -34,13 +35,12 @@ class ReportBuilder implements ReportBuilderInterface
         $this->buildEndTags();
 
         return $this->html;
-
     }
 
     /**
      * Start document tags
      */
-    public function buildStartTags () : void
+    public function buildStartTags() : void
     {
         $this->html .= Tags::HTML_START . Tags::BODY_START . TAGS::TABLE_START;
     }
@@ -48,7 +48,7 @@ class ReportBuilder implements ReportBuilderInterface
     /**
      * End document tags
      */
-    public function buildEndTags () : void
+    public function buildEndTags() : void
     {
         $this->html .= TAGS::TABLE_END . Tags::BODY_END . Tags::HTML_END;
     }
@@ -56,7 +56,7 @@ class ReportBuilder implements ReportBuilderInterface
     /**
      * Build first line for table where headers
      */
-    public function buildTableHeader () : void
+    public function buildTableHeader() : void
     {
         $texts = [
             Words::URL,
@@ -71,7 +71,7 @@ class ReportBuilder implements ReportBuilderInterface
     /**
      * Build last line for table where additional information
      */
-    public function buildTableFooter () : void
+    public function buildTableFooter() : void
     {
         $texts = [
             Words::LINK_COUNT,
@@ -86,7 +86,7 @@ class ReportBuilder implements ReportBuilderInterface
     /**
      * @param array $texts
      */
-    public function buildTr (array $texts) : void
+    public function buildTr(array $texts) : void
     {
         $trTag = Tags::TR_START;
 
@@ -101,7 +101,7 @@ class ReportBuilder implements ReportBuilderInterface
      * @param string $text
      * @return string
      */
-    public function buildTd (string $text) : string
+    public function buildTd(string $text) : string
     {
         return Tags::TD_START . $text . Tags::TD_END;
     }
@@ -110,7 +110,7 @@ class ReportBuilder implements ReportBuilderInterface
      * @param mixed $pages
      * @return $this
      */
-    public function setPages ($pages) : ReportBuilder
+    public function setPages($pages) : ReportBuilder
     {
         $this->pages = $pages;
 
@@ -121,7 +121,7 @@ class ReportBuilder implements ReportBuilderInterface
      * @param mixed $loadTime
      * @return $this
      */
-    public function setLoadTime ($loadTime) : ReportBuilder
+    public function setLoadTime($loadTime) : ReportBuilder
     {
         $this->loadTime = $loadTime;
 

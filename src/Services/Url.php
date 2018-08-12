@@ -59,11 +59,16 @@ class Url implements UrlInterface
         $parseUrl = parse_url($url);
 
         try {
-            return new self($parseUrl['scheme'], $parseUrl['host'], $parseUrl['port'], $parseUrl['path'], $parseUrl['query']);
+            return new self(
+                $parseUrl['scheme'],
+                $parseUrl['host'],
+                $parseUrl['port'],
+                $parseUrl['path'],
+                $parseUrl['query']
+            );
         } catch (\Throwable $exception) {
             throw new BadUrlException();
         }
-
     }
 
     /**
@@ -73,8 +78,10 @@ class Url implements UrlInterface
     {
         $string =  $this->getScheme() . self::SEPARATOR . $this->getHost() . $this->getPort() . $this->getPath();
 
-        if ($this->getQuery())
+        if ($this->getQuery()) {
             $string .=  '?' . $this->getQuery();
+        }
+
 
         return $string;
     }

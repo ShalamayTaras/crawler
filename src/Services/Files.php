@@ -2,7 +2,6 @@
 
 namespace Services;
 
-
 use Interfaces\ReportBuilderInterface;
 
 /**
@@ -18,8 +17,8 @@ class Files
      * @param string $domain
      * @param ReportBuilderInterface $report
      */
-    public static function save (string $domain, ReportBuilderInterface $report) : void
+    public static function save(string $domain, ReportBuilderInterface $report) : void
     {
-        file_put_contents(self::STORAGE . '/' . $domain . '_' . date('d.m.y') . self::FILE_EXTENSION , $report->build());
+        file_put_contents(self::STORAGE . '/' . $domain . '_' . date('d.m.y') . self::FILE_EXTENSION, $report->build());
     }
 }

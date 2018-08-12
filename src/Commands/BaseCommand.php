@@ -17,17 +17,13 @@ class BaseCommand
      * @param string $url
      * @return string
      */
-    public function runCommand (string $url) : string
+    public function runCommand(string $url) : string
     {
-        try{
+        try {
             $url = Url::make($url);
-
-        }
-        catch (BadUrlException $exception)
-        {
+        } catch (BadUrlException $exception) {
             return $exception->getMessage();
         }
-
         $pages = (new Pages($url));
 
         $start = microtime(true);
@@ -36,8 +32,9 @@ class BaseCommand
         $pages->filterPages();
         $pages->sortPages();
 
-        if ($pages->isEmpty())
+        if ($pages->isEmpty()) {
             return 'Bad link';
+        }
 
         $workTime = microtime(true)- $start;
 

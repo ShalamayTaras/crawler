@@ -17,7 +17,7 @@ class Loader
      * @param int $depth
      * @return null|Page
      */
-    public function load (string $url, int $depth) : ?Page
+    public function load(string $url, int $depth) : ?Page
     {
         try {
             $pageUrl = Url::make($url);
@@ -51,11 +51,12 @@ class Loader
      * @return string
      * @throws CanNotGetContentException
      */
-    public function loadPage (string $url) : string
+    public function loadPage(string $url) : string
     {
         $content = @file_get_contents($url);
-        if ($content === false)
+        if ($content === false) {
             throw new CanNotGetContentException();
+        }
 
         return $content;
     }
