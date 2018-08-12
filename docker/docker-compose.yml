@@ -13,15 +13,6 @@ services:
       - backend
 
   # http server
-  nginx:
-    build:
-      context: ""
-      dockerfile: web.dockerfile
-    working_dir: /app
-    networks:
-      - backend
-    ports:
-      - 777:80
 
 networks:
   backend:
