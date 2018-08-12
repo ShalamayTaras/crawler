@@ -1,12 +1,15 @@
-<?php
+<?php declare( strict_types = 1 );
 
 namespace Services\Page;
-
 
 use Exceptions\BadUrlException;
 use Interfaces\UrlInterface;
 use Services\Url;
 
+/**
+ * Class Links
+ * @package Services\Page
+ */
 class Links
 {
     CONST PATTERN = '/<a.*?href="(?P<links>[^"]*)".*?\/?>/                                                                                                   mi';
@@ -16,7 +19,7 @@ class Links
      * @param UrlInterface $pageUrl
      * @return array
      */
-    public static function getLinks(string $pageData, UrlInterface $pageUrl): array
+    public static function getLinks (string $pageData, UrlInterface $pageUrl) : array
     {
         preg_match_all(self::PATTERN, $pageData, $result);
 
@@ -30,7 +33,7 @@ class Links
      * @param UrlInterface $pageUrl
      * @return array
      */
-    private static function prepareLinks(array $links, UrlInterface $pageUrl): array
+    private static function prepareLinks (array $links, UrlInterface $pageUrl) : array
     {
         foreach ($links as $key => $link) {
             /** @var Url $url */
@@ -41,54 +44,64 @@ class Links
             self::preparePath($url);
 
             if (! $url->isValidate())
-                unset($links[$key]);
+                unset($links[ $key ]);
             else
-                $links[$key] = $url->toString();
+                $links[ $key ] = $url->toString();
         }
 
         return $links;
     }
 
-    public static function preparePath(Url $url)
+    /**
+     * @param Url $url
+     */
+    public static function preparePath (Url $url)
     {
 
         if (strpos($url->getPath(), '/') !== 0)
-            $url->setPath('/'. $url->getPath());
+            $url->setPath('/' . $url->getPath());
 
-        if (strripos($url->getPath(), '/') === strlen($url->getPath())-1)
-            $url->setPath(substr($url->getPath(), 0,strlen($url->getPath())-1));
+        if (strripos($url->getPath(), '/') === strlen($url->getPath()) - 1)
+            $url->setPath(substr($url->getPath(), 0, strlen($url->getPath()) - 1));
 
     }
 
-    public static function prepareHost(UrlInterface $url, UrlInterface $pageUrl)
+    /**
+     * @param UrlInterface $url
+     * @param UrlInterface $pageUrl
+     */
+    public static function prepareHost (UrlInterface $url, UrlInterface $pageUrl)
     {
         if (is_null($url->getHost()))
             $url->setHost($pageUrl->getHost());
-
     }
 
 
-    public static function prepareScheme(UrlInterface $url, UrlInterface $pageUrl)
+    /**
+     * @param UrlInterface $url
+     * @param UrlInterface $pageUrl
+     */
+    public static function prepareScheme (UrlInterface $url, UrlInterface $pageUrl)
     {
         if (is_null($url->getScheme()))
             $url->setScheme($pageUrl->getScheme());
     }
+
     /**
      * @param array $links
      * @param string $siteDomain
      * @return array
      */
-    public static function filterLinks(array $links, string $siteDomain): array
+    public static function filterLinks (array $links, string $siteDomain) : array
     {
-        return array_filter($links, function ($link) use ($siteDomain) {
+        return array_filter($links, function($link) use ($siteDomain) {
             try {
                 /** @var URL $url */
                 $url = Url::make($link);
-            }
-            catch (BadUrlException $exception){
+            } catch (BadUrlException $exception) {
                 return false;
             }
-            return ($url->getHost() === $siteDomain) ? $link : false;
+            return ( $url->getHost() === $siteDomain ) ? $link : false;
         });
     }
 }

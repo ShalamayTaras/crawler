@@ -1,13 +1,16 @@
-<?php
+<?php declare( strict_types = 1 );
 
 namespace Services;
-
 
 use Interfaces\UrlInterface;
 use Services\Page\Loader;
 use Services\Page\Page;
 use Services\Report\ReportBuilder;
 
+/**
+ * Class Pages
+ * @package Services
+ */
 class Pages
 {
     public $pages;
@@ -24,6 +27,9 @@ class Pages
         $this->domain = $link->getHost();
     }
 
+    /**
+     * Parse page
+     */
     public function parsePages()
     {
         foreach ($this->pages as $link => $page) {
@@ -53,6 +59,9 @@ class Pages
         }
     }
 
+    /**
+     * Sort pages by img count
+     */
     public function sortPages()
     {
         uasort($this->pages, function(Page $firstElement,Page $secondElement){
@@ -60,6 +69,9 @@ class Pages
         });
     }
 
+    /**
+     * Remove element which can not be parse
+     */
     public function filterPages()
     {
         $this->pages = array_filter($this->pages, function($element){
@@ -67,7 +79,10 @@ class Pages
         });
     }
 
-
+    /**
+     * @param float $time
+     * @return string
+     */
     public function getResult(float $time) : string
     {
         $report = new ReportBuilder();
@@ -77,6 +92,9 @@ class Pages
         return $report->build();
     }
 
+    /**
+     * @return bool
+     */
     public function isEmpty() : bool
     {
         return empty($this->pages);

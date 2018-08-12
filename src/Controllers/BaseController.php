@@ -1,4 +1,4 @@
-<?php
+<?php declare( strict_types = 1 );
 
 namespace Controllers;
 
@@ -6,9 +6,17 @@ use Exceptions\BadUrlException;
 use Services\Pages;
 use Services\Url;
 
+/**
+ * Class BaseController
+ * @package Controllers
+ */
 class BaseController
 {
 
+    /**
+     * @param string $url
+     * @return string
+     */
     public function runCommand(string $url)
     {
         try{

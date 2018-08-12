@@ -1,8 +1,11 @@
-<?php
+<?php declare( strict_types = 1 );
 
 namespace Services\Page;
 
-
+/**
+ * Class Page
+ * @package Services\Page
+ */
 class Page
 {
     private $url;
@@ -30,7 +33,10 @@ class Page
         return $this;
     }
 
-    public function toArray()
+    /**
+     * @return array
+     */
+    public function toArray() : array
     {
         return [
             $this->getUrl(),

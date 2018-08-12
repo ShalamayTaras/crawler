@@ -1,7 +1,11 @@
-<?php
+<?php declare( strict_types = 1 );
 
 namespace Services\Report;
 
+/**
+ * Class Tags
+ * @package Services\Report
+ */
 class Tags
 {
     CONST HTML_START  = '<html>';

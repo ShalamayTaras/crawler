@@ -1,16 +1,23 @@
-<?php
+<?php declare( strict_types = 1 );
 
 namespace Services\Report;
 
 use Interfaces\ReportBuilderInterface;
 use Services\Page\Page;
 
+/**
+ * Class ReportBuilder
+ * @package Services\Report
+ */
 class ReportBuilder implements ReportBuilderInterface
 {
     private $html;
     private $pages;
     private $loadTime;
 
+    /**
+     * @return string
+     */
     public function build() : string
     {
         $this->buildStartTags();
@@ -30,16 +37,25 @@ class ReportBuilder implements ReportBuilderInterface
 
     }
 
+    /**
+     * Start document tags
+     */
     public function buildStartTags()
     {
         $this->html .= Tags::HTML_START . Tags::BODY_START . TAGS::TABLE_START;
     }
 
+    /**
+     * End document tags
+     */
     public function buildEndTags()
     {
         $this->html .= TAGS::TABLE_END . Tags::BODY_END . Tags::HTML_END;
     }
 
+    /**
+     * Build first line for table where headers
+     */
     public function buildTableHeader()
     {
         $texts = [
@@ -52,6 +68,9 @@ class ReportBuilder implements ReportBuilderInterface
         $this->buildTr($texts);
     }
 
+    /**
+     * Build last line for table where additional information
+     */
     public function buildTableFooter()
     {
         $texts = [
@@ -64,16 +83,23 @@ class ReportBuilder implements ReportBuilderInterface
         $this->buildTr($texts);
     }
 
+    /**
+     * @param array $texts
+     */
     public function buildTr(array $texts)
     {
-        $tr = Tags::TR_START;
+        $trTag = Tags::TR_START;
 
         foreach ($texts as $text)
-            $tr .= $this->buildTd($text);
+            $trTag .= $this->buildTd($text);
 
-        $this->html .= $tr . Tags::TR_END;
+        $this->html .= $trTag . Tags::TR_END;
     }
 
+    /**
+     * @param string $text
+     * @return string
+     */
     public function buildTd(string $text)
     {
         return Tags::TD_START . $text . Tags::TD_END;
@@ -100,6 +126,4 @@ class ReportBuilder implements ReportBuilderInterface
 
         return $this;
     }
-
-
 }

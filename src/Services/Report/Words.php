@@ -1,7 +1,11 @@
-<?php
+<?php declare( strict_types = 1 );
 
 namespace Services\Report;
 
+/**
+ * Class Words
+ * @package Services\Report
+ */
 class Words
 {
     const URL         = 'URL';

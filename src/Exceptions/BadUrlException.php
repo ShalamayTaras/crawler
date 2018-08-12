@@ -1,7 +1,11 @@
-<?php
+<?php declare( strict_types = 1 );
 
 namespace Exceptions;
 
+/**
+ * Class BadUrlException
+ * @package Exceptions
+ */
 class BadUrlException extends \Exception
 {
 

@@ -20,7 +20,7 @@ class Loader
     {
         try {
             $pageUrl = Url::make($url);
-        } catch (BadUrlException $e) {
+        } catch (BadUrlException $exception) {
             return false;
         }
         $startTime = microtime(true);
@@ -49,6 +49,6 @@ class Loader
      */
     public function loadPage(string $url)
     {
-        return @file_get_contents($url);
+        return file_get_contents($url);
     }
 }

@@ -35,6 +35,9 @@ class Url implements UrlInterface
         $this->setQuery($query);
     }
 
+    /**
+     * @return bool
+     */
     public function isValidate(): bool
     {
         if (empty($this->getPath()))
