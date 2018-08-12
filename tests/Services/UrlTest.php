@@ -2,33 +2,31 @@
 
 use PHPUnit\Framework\TestCase;
 
-
 /**
  * Class UrlTest
  */
 class UrlTest extends TestCase
 {
+    const URL     = 'https://www.google.com.ua';
+    const BAD_URL = 'mailto://www.google.com.ua';
 
-    public function testCreateUrl ()
+    public function testCreateUrl()
     {
-        $link = 'https://www.google.com.ua';
-        $url  = \Services\Url::make($link);
+        $url = \Services\Url::make(self::URL);
 
-        static::assertEquals($url->toString(), $link);
+        static::assertEquals($url->toString(), self::URL);
     }
 
-    public function testValidateUrlTrue ()
+    public function testValidateUrlTrue()
     {
-        $link = 'https://www.google.com.ua';
-        $url  = \Services\Url::make($link);
+        $url = \Services\Url::make(self::URL);
 
         static::assertEquals($url->isValidate(), true);
     }
 
     public function testValidateUrlFalse ()
     {
-        $link = 'mailto://www.google.com.ua';
-        $url  = \Services\Url::make($link);
+        $url = \Services\Url::make(self::BAD_URL);
 
         static::assertEquals($url->isValidate(), false);
     }

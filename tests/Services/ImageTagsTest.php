@@ -1,5 +1,7 @@
 <?php declare( strict_types = 1 );
 
+namespace Tests;
+
 use PHPUnit\Framework\TestCase;
 
 
@@ -8,7 +10,7 @@ use PHPUnit\Framework\TestCase;
  */
 class ImageTagsTest extends TestCase
 {
-    public function testGetImgCount ()
+    public function testGetImgCount()
     {
         $imgCount = \Services\Page\ImageTags::getImgCount(self::getTextWithImgTags());
 
@@ -19,10 +21,11 @@ class ImageTagsTest extends TestCase
         static::assertEquals($imgCount, 0);
     }
 
+
     /**
      * @return string
      */
-    public static function getTextWithImgTags ()
+    public static function getTextWithImgTags()
     {
         return '<img> <img>';
     }
@@ -30,9 +33,8 @@ class ImageTagsTest extends TestCase
     /**
      * @return string
      */
-    public static function getTextWithOutImgTags ()
+    public static function getTextWithOutImgTags()
     {
         return 'html';
     }
-
 }

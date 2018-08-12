@@ -9,7 +9,13 @@ use PHPUnit\Framework\TestCase;
 class LinksTest extends TestCase
 {
 
-    public function testGetImgCount ()
+    public static function generateContent()
+    {
+
+
+    }
+
+    public function testGetImgCount()
     {
 
     }
