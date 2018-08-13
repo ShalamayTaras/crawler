@@ -39,7 +39,5 @@ class ReportBuilderTest extends TestCase
         self::assertContains((string)self::IMG_COUNT, $report);
         self::assertContains((string)self::DEPTH, $report);
         self::assertContains((string)self::LOAD_TIME, $report);
-
     }
-
 }

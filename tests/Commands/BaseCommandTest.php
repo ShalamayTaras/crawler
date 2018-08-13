@@ -6,7 +6,6 @@ namespace Tests;
 use Commands\BaseCommand;
 use PHPUnit\Framework\TestCase;
 
-
 /**
  * Class BaseCommandTest
  * @package Tests

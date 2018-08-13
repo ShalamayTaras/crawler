@@ -1,9 +1,10 @@
 <?php declare(strict_types = 1);
 
+namespace Tests;
+
 use PHPUnit\Framework\TestCase;
 use Services\Page\Links;
 use Services\Url;
-
 
 /**
  * Class LinksTest
@@ -17,12 +18,12 @@ class LinksTest extends TestCase
     const URL_SCHEME_HTTP  = 'http://other-test.com.ua';
     const OTHER_DOMAIN     = 'other-test.com.ua';
 
-    const MUST_TRANSFORM_URL   = 'test/';
+    const MUST_TRANSFORM_URL = 'test/';
     const RESULT_TRANSFORM_URL = '/test';
     const BAD_URL              = 'mailto://test.com.ua';
     const SCHEME_HTTP          = 'http';
     const SCHEME_HTTPS         = 'https';
-    const HTML                 = '<html>
+    const HTML               = '<html>
                             <a href="' . self::OTHER_DOMAIN_URL . '" />
                             <a href="' . self::SAME_DOMAIN_URL . '"/>
                             <a href="' . self::TEST_DOMAIN . ' "/>
@@ -153,7 +154,6 @@ class LinksTest extends TestCase
                 self::OTHER_DOMAIN,
                 [],
             ],
-
         ];
     }
 }
