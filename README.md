@@ -15,4 +15,4 @@
 
 ## Result
 
-Generate html report of the work is in the folder ./storage
+Generate and save html report of the work to **./storage** folder 
