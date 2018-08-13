@@ -43,7 +43,6 @@ class Page
             $this->getImgCount(),
             $this->getDepth(),
             $this->getLoadTime(),
-
         ];
     }
 
