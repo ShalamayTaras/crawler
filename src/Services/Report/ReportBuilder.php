@@ -110,7 +110,7 @@ class ReportBuilder implements ReportBuilderInterface
      * @param mixed $pages
      * @return $this
      */
-    public function setPages($pages) : ReportBuilder
+    public function setPages(array $pages) : ReportBuilder
     {
         $this->pages = $pages;
 
@@ -121,7 +121,7 @@ class ReportBuilder implements ReportBuilderInterface
      * @param mixed $loadTime
      * @return $this
      */
-    public function setLoadTime($loadTime) : ReportBuilder
+    public function setLoadTime(float $loadTime) : ReportBuilder
     {
         $this->loadTime = $loadTime;
 
