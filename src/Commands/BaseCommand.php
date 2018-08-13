@@ -12,6 +12,8 @@ use Services\Url;
  */
 class BaseCommand
 {
+    const SUCCESS  = 'Success';
+    const BAD_LINK = 'Bad link';
 
     /**
      * @param string $url
@@ -33,13 +35,13 @@ class BaseCommand
         $pages->sortPages();
 
         if ($pages->isEmpty()) {
-            return 'Bad link';
+            return self::BAD_LINK;
         }
 
         $workTime = microtime(true)- $start;
 
         $pages->getResult($workTime);
 
-        return 'Success';
+        return self::SUCCESS;
     }
 }
