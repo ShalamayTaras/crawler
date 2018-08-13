@@ -3,38 +3,34 @@
 namespace Tests;
 
 use PHPUnit\Framework\TestCase;
-
+use Services\Page\ImageTags;
 
 /**
  * Class ImageTagsTest
  */
 class ImageTagsTest extends TestCase
 {
-    public function testGetImgCount()
-    {
-        $imgCount = \Services\Page\ImageTags::getImgCount(self::getTextWithImgTags());
-
-        static::assertEquals($imgCount, 2);
-
-        $imgCount = \Services\Page\ImageTags::getImgCount(self::getTextWithOutImgTags());
-
-        static::assertEquals($imgCount, 0);
-    }
-
-
     /**
-     * @return string
+     * @dataProvider additionProvider
+     * @param string $text
+     * @param int $expected
      */
-    public static function getTextWithImgTags()
+    public function testGetImgCount(string $text, int $expected)
     {
-        return '<img> <img>';
+        $imgCount = ImageTags::getImgCount($text);
+
+        static::assertEquals($imgCount, $expected);
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public static function getTextWithOutImgTags()
+    public static function additionProvider() : array
     {
-        return 'html';
+        return [
+            ['<img> <img>', 2],
+            ['<html>', 0],
+        ];
     }
 }
+
