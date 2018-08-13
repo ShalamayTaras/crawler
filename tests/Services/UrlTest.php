@@ -7,27 +7,40 @@ use PHPUnit\Framework\TestCase;
  */
 class UrlTest extends TestCase
 {
-    const URL     = 'https://www.google.com.ua';
-    const BAD_URL = 'mailto://www.google.com.ua';
+    const GOOD_URL = 'https://www.google.com.ua';
+    const BAD_URL  = 'mailto://www.google.com.ua';
 
+    /**
+     *
+     */
     public function testCreateUrl()
     {
-        $url = \Services\Url::make(self::URL);
+        $url = \Services\Url::make(self::GOOD_URL);
 
-        static::assertEquals($url->toString(), self::URL);
+        static::assertEquals($url->toString(), self::GOOD_URL);
     }
 
-    public function testValidateUrlTrue()
+    /**
+     * @dataProvider additionProvider
+     * @param string $url
+     * @param $expected
+     */
+    public function testValidateUrlTrue(string $url, $expected)
     {
-        $url = \Services\Url::make(self::URL);
+        $url = \Services\Url::make($url);
 
-        static::assertEquals($url->isValidate(), true);
+        static::assertEquals($expected, $url->isValidate());
     }
 
-    public function testValidateUrlFalse ()
+    /**
+     * @return array
+     */
+    public static function additionProvider() : array
     {
-        $url = \Services\Url::make(self::BAD_URL);
-
-        static::assertEquals($url->isValidate(), false);
+        return [
+            'good url' => [self::GOOD_URL, true],
+            'bad url'  => [self::BAD_URL, false],
+        ];
     }
 }
+
