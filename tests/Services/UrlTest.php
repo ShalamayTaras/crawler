@@ -3,6 +3,7 @@
 namespace Tests;
 
 use PHPUnit\Framework\TestCase;
+use Services\Url;
 
 /**
  * Class UrlTest
@@ -15,9 +16,9 @@ class UrlTest extends TestCase
     /**
      *
      */
-    public function testCreateUrl()
+    public function testCreateUrl() : void
     {
-        $url = \Services\Url::make(self::GOOD_URL);
+        $url = Url::make(self::GOOD_URL);
 
         static::assertEquals($url->toString(), self::GOOD_URL);
     }
@@ -27,9 +28,9 @@ class UrlTest extends TestCase
      * @param string $url
      * @param $expected
      */
-    public function testValidateUrlTrue(string $url, $expected)
+    public function testValidateUrlTrue(string $url, $expected) : void
     {
-        $url = \Services\Url::make($url);
+        $url = Url::make($url);
 
         static::assertEquals($expected, $url->isValidate());
     }

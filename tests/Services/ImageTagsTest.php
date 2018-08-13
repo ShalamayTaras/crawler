@@ -15,7 +15,7 @@ class ImageTagsTest extends TestCase
      * @param string $text
      * @param int $expected
      */
-    public function testGetImgCount(string $text, int $expected)
+    public function testGetImgCount(string $text, int $expected) : void
     {
         $imgCount = ImageTags::getImgCount($text);
 

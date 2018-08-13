@@ -32,7 +32,7 @@ class LinksTest extends TestCase
                           </html>';
 
 
-    public function testGetLinks()
+    public function testGetLinks() : void
     {
         $url = Url::make(self::GOOD_URL);
 
@@ -46,7 +46,7 @@ class LinksTest extends TestCase
     /**
      * Test for change path of url
      */
-    public function testPreparePathChange()
+    public function testPreparePathChange() : void
     {
         /** @var URL $url */
         $url = Url::make(self::MUST_TRANSFORM_URL);
@@ -59,7 +59,7 @@ class LinksTest extends TestCase
     /**
      * Test for no change host of url
      */
-    public function testPreparePathNoChange()
+    public function testPreparePathNoChange() : void
     {
         /** @var Url $goodUrl */
         $goodUrl = Url::make(self::GOOD_URL);
@@ -72,7 +72,7 @@ class LinksTest extends TestCase
     /**
      * Test for change host of url
      */
-    public function testPrepareHostChange()
+    public function testPrepareHostChange() : void
     {
         $goodUrl          = Url::make(self::MUST_TRANSFORM_URL);
         $urlWithoutScheme = Url::make(self::TEST_DOMAIN);
@@ -85,7 +85,7 @@ class LinksTest extends TestCase
     /**
      * Test for no change host of url
      */
-    public function testPrepareHostNoChange()
+    public function testPrepareHostNoChange() : void
     {
         $goodUrl     = Url::make(self::GOOD_URL);
         $otherScheme = Url::make(self::OTHER_DOMAIN_URL);
@@ -98,7 +98,7 @@ class LinksTest extends TestCase
     /**
      * Test for change scheme of url
      */
-    public function testPrepareSchemeChange()
+    public function testPrepareSchemeChange() : void
     {
         $goodUrl          = Url::make(self::GOOD_URL);
         $urlWithoutScheme = Url::make(self::TEST_DOMAIN);
@@ -111,7 +111,7 @@ class LinksTest extends TestCase
     /**
      * Test for no change scheme of url
      */
-    public function testPrepareSchemeNoChange()
+    public function testPrepareSchemeNoChange() : void
     {
         $goodUrl     = Url::make(self::GOOD_URL);
         $otherScheme = Url::make(self::URL_SCHEME_HTTP);
@@ -127,7 +127,7 @@ class LinksTest extends TestCase
      * @param string $domain
      * @param $expected
      */
-    public function testFilterLinks(array $links, string $domain, array $expected)
+    public function testFilterLinks(array $links, string $domain, array $expected) : void
     {
         $filteredLink = Links::filterLinks($links, $domain);
         static::assertEquals($expected, $filteredLink);

@@ -17,7 +17,7 @@ class BaseCommandTest extends TestCase
     const SUCCESS  = 'Success';
     const BAD_LINK = 'Bad link';
 
-    public function testRunSuccess()
+    public function testRunSuccess() : void
     {
         $command = new BaseCommand();
         $result  = $command->runCommand(self::GOOD_URL);
@@ -25,7 +25,7 @@ class BaseCommandTest extends TestCase
         self::assertContains(self::SUCCESS, $result);
     }
 
-    public function testRunFail()
+    public function testRunFail() : void
     {
         $command = new BaseCommand();
         $result  = $command->runCommand(self::BAD_URL);

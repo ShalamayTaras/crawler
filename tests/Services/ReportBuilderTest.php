@@ -17,7 +17,7 @@ class ReportBuilderTest extends TestCase
     const DEPTH     = 5;
     const URL       = 'https://test.com.ua';
 
-    public function testBuild()
+    public function testBuild() : void
     {
         $page = self::createMock(Page::class);
         $page->method('toArray')->willReturn([
