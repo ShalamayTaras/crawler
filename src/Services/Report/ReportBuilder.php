@@ -11,8 +11,19 @@ use Services\Page\Page;
  */
 class ReportBuilder implements ReportBuilderInterface
 {
+    /**
+     * @var  string
+     */
     private $html;
+
+    /**
+     * @var array
+     */
     private $pages;
+
+    /**
+     * @var float
+     */
     private $loadTime;
 
     /**

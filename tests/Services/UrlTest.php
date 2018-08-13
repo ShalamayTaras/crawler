@@ -10,11 +10,18 @@ use Services\Url;
  */
 class UrlTest extends TestCase
 {
+    /**
+     * @var string
+     */
     const GOOD_URL = 'https://www.google.com.ua';
-    const BAD_URL  = 'mailto://www.google.com.ua';
 
     /**
-     *
+     * @var string
+     */
+    const BAD_URL = 'mailto://www.google.com.ua';
+
+    /**
+     * Test create Url object
      */
     public function testCreateUrl() : void
     {

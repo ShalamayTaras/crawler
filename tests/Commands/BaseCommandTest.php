@@ -12,11 +12,29 @@ use PHPUnit\Framework\TestCase;
  */
 class BaseCommandTest extends TestCase
 {
+    /**
+     * @var string
+     */
     const GOOD_URL = 'https://google.com.ua';
-    const BAD_URL  = 'google.com.ua';
-    const SUCCESS  = 'Success';
+
+    /**
+     * @var string
+     */
+    const BAD_URL = 'google.com.ua';
+
+    /**
+     * @var string
+     */
+    const SUCCESS = 'Success';
+
+    /**
+     * @var string
+     */
     const BAD_LINK = 'Bad link';
 
+    /**
+     *
+     */
     public function testRunSuccess() : void
     {
         $command = new BaseCommand();
@@ -25,6 +43,9 @@ class BaseCommandTest extends TestCase
         self::assertContains(self::SUCCESS, $result);
     }
 
+    /**
+     *
+     */
     public function testRunFail() : void
     {
         $command = new BaseCommand();

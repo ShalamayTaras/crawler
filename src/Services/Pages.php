@@ -13,8 +13,19 @@ use Services\Report\ReportBuilder;
  */
 class Pages
 {
+    /**
+     * @var array
+     */
     public $pages;
+
+    /**
+     * @var null|string
+     */
     public $domain;
+
+    /**
+     * @var int
+     */
     private $depth = 0;
 
     /**

@@ -11,19 +11,65 @@ use Services\Url;
  */
 class LinksTest extends TestCase
 {
-    const GOOD_URL         = 'https://test.com.ua/test';
-    const OTHER_DOMAIN_URL = 'https://other.com.ua/test';
-    const SAME_DOMAIN_URL  = 'https://test.com.ua/test/test';
-    const TEST_DOMAIN      = 'test.com.ua';
-    const URL_SCHEME_HTTP  = 'http://other-test.com.ua';
-    const OTHER_DOMAIN     = 'other-test.com.ua';
+    /**
+     * @var string
+     */
+    const GOOD_URL = 'https://test.com.ua/test';
 
+    /**
+     * @var string
+     */
+    const OTHER_DOMAIN_URL = 'https://other.com.ua/test';
+
+    /**
+     * @var string
+     */
+    const SAME_DOMAIN_URL = 'https://test.com.ua/test/test';
+
+    /**
+     * @var string
+     */
+    const TEST_DOMAIN = 'test.com.ua';
+
+    /**
+     * @var string
+     */
+    const URL_SCHEME_HTTP = 'http://other-test.com.ua';
+
+    /**
+     * @var string
+     */
+    const OTHER_DOMAIN = 'other-test.com.ua';
+
+    /**
+     * @var string
+     */
     const MUST_TRANSFORM_URL = 'test/';
+
+    /**
+     * @var string
+     */
     const RESULT_TRANSFORM_URL = '/test';
-    const BAD_URL              = 'mailto://test.com.ua';
-    const SCHEME_HTTP          = 'http';
-    const SCHEME_HTTPS         = 'https';
-    const HTML               = '<html>
+
+    /**
+     * @var string
+     */
+    const BAD_URL = 'mailto://test.com.ua';
+
+    /**
+     * @var string
+     */
+    const SCHEME_HTTP = 'http';
+
+    /**
+     * @var string
+     */
+    const SCHEME_HTTPS = 'https';
+
+    /**
+     * @var string
+     */
+    const HTML = '<html>
                             <a href="' . self::OTHER_DOMAIN_URL . '" />
                             <a href="' . self::SAME_DOMAIN_URL . '"/>
                             <a href="' . self::TEST_DOMAIN . ' "/>
@@ -32,6 +78,9 @@ class LinksTest extends TestCase
                           </html>';
 
 
+    /**
+     * Test method getLinks
+     */
     public function testGetLinks() : void
     {
         $url = Url::make(self::GOOD_URL);

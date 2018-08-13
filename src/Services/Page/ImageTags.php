@@ -8,6 +8,9 @@ namespace Services\Page;
  */
 class ImageTags
 {
+    /**
+     * @var string
+     */
     private const PATTERN = '/<img(?P<img>)/mi';
 
     /**

@@ -11,6 +11,16 @@ use Services\Page\ImageTags;
 class ImageTagsTest extends TestCase
 {
     /**
+     * @var string
+     */
+    const IMG = '<img> <img>';
+
+    /**
+     * @var string
+     */
+    const HTML = '<html>';
+
+    /**
      * @dataProvider additionProvider
      * @param string $text
      * @param int $expected
@@ -28,8 +38,8 @@ class ImageTagsTest extends TestCase
     public static function additionProvider() : array
     {
         return [
-            ['<img> <img>', 2],
-            ['<html>', 0],
+            [self::IMG, 2],
+            [self::HTML, 0],
         ];
     }
 }

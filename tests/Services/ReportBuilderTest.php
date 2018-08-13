@@ -12,11 +12,29 @@ use Services\Report\ReportBuilder;
  */
 class ReportBuilderTest extends TestCase
 {
+    /**
+     * @var float
+     */
     const LOAD_TIME = 2.0;
-    const IMG_COUNT = 2;
-    const DEPTH     = 5;
-    const URL       = 'https://test.com.ua';
 
+    /**
+     * @var int
+     */
+    const IMG_COUNT = 2;
+
+    /**
+     * @var int
+     */
+    const DEPTH = 5;
+
+    /**
+     * @var string
+     */
+    const URL = 'https://test.com.ua';
+
+    /**
+     * Test Build html
+     */
     public function testBuild() : void
     {
         $page = self::createMock(Page::class);

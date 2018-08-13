@@ -8,14 +8,53 @@ namespace Services\Report;
  */
 class Tags
 {
-    const HTML_START  = '<html>';
-    const HTML_END    = '</html>';
-    const BODY_START  = '<body>';
-    const BODY_END    = '</body>';
+    /**
+     * @var string
+     */
+    const HTML_START = '<html>';
+
+    /**
+     * @var string
+     */
+    const HTML_END = '</html>';
+
+    /**
+     * @var string
+     */
+    const BODY_START = '<body>';
+
+    /**
+     * @var string
+     */
+    const BODY_END = '</body>';
+
+    /**
+     * @var string
+     */
     const TABLE_START = '<table style="border: 1px solid">';
-    const TABLE_END   = '</table>';
-    const TR_START    = '<tr>';
-    const TR_END      = '</tr>';
-    const TD_START    = '<td style="border: 1px solid">';
-    const TD_END      = '</td>';
+
+    /**
+     * @var string
+     */
+    const TABLE_END = '</table>';
+
+    /**
+     * @var string
+     */
+    const TR_START = '<tr>';
+
+    /**
+     * @var string
+     */
+    const TR_END = '</tr>';
+
+    /**
+     * @var string
+     */
+    const TD_START = '<td style="border: 1px solid">';
+
+    /**
+     * @var string
+     */
+    const TD_END = '</td>';
 }

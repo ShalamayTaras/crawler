@@ -8,10 +8,29 @@ namespace Services\Page;
  */
 class Page
 {
+    /**
+     * @var string|null
+     */
     private $url;
+
+    /**
+     * @var int|null
+     */
     private $imgCount;
+
+    /**
+     * @var int|null
+     */
     private $depth;
+
+    /**
+     * @var float|null
+     */
     private $loadTime;
+
+    /**
+     * @var array
+     */
     private $links;
 
     /**

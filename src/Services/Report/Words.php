@@ -8,10 +8,33 @@ namespace Services\Report;
  */
 class Words
 {
-    const URL         = 'URL';
+    /**
+     * @var string
+     */
+    const URL = 'URL';
+
+    /**
+     * @var string
+     */
     const IMAGE_COUNT = 'Image count';
-    const DEPTH       = 'Depth';
-    const LOAD_TIME   = 'Load time';
-    const LINK_COUNT  = 'Link count';
-    const SECONDS     = '%F seconds';
+
+    /**
+     * @var string
+     */
+    const DEPTH = 'Depth';
+
+    /**
+     * @var string
+     */
+    const LOAD_TIME = 'Load time';
+
+    /**
+     * @var string
+     */
+    const LINK_COUNT = 'Link count';
+
+    /**
+     * @var string
+     */
+    const SECONDS = '%F seconds';
 }

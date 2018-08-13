@@ -11,11 +11,30 @@ use Services\Page\Page;
  */
 class PageTest extends TestCase
 {
-    const URL         = 'test.url.com';
-    const LINKS       = ['test.url.com/test', 'other.url.test'];
-    const LOAD_TIME   = 0.16;
+    /**
+     * @var string
+     */
+    const URL = 'test.url.com';
+
+    /**
+     * @var array
+     */
+    const LINKS = ['test.url.com/test', 'other.url.test'];
+
+    /**
+     * @var float
+     */
+    const LOAD_TIME = 0.16;
+
+    /**
+     * @var int
+     */
     const IMAGE_COUNT = 16;
-    const DEPTH       = 2;
+
+    /**
+     * @var int
+     */
+    const DEPTH = 2;
 
     /**
      * @dataProvider  createPageProvider

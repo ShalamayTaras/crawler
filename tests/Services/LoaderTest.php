@@ -12,11 +12,18 @@ use Services\Page\Page;
  */
 class LoaderTest extends TestCase
 {
+    /**
+     * @var string
+     */
     const GOOD_URL = 'https://google.com.ua';
-    const BAD_URL  = 'google.com.ua';
 
     /**
-     *
+     * @var string
+     */
+    const BAD_URL = 'google.com.ua';
+
+    /**
+     * Test load return Page object
      */
     public function testLoad() : void
     {
@@ -27,7 +34,7 @@ class LoaderTest extends TestCase
     }
 
     /**
-     *
+     * Test Load return null
      */
     public function testLoadFalse() : void
     {

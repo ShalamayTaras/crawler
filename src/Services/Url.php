@@ -11,11 +11,34 @@ use Interfaces\UrlInterface;
  */
 class Url implements UrlInterface
 {
+    /**
+     * @var string|null
+     */
     private $scheme;
+
+    /**
+     * @var string|null
+     */
     private $host;
+
+    /**
+     * @var int|null
+     */
     private $port;
+
+    /**
+     * @var string|null
+     */
     private $path;
+
+    /**
+     * @var string|null
+     */
     private $query;
+
+    /**
+     * @var string
+     */
     const SEPARATOR = '://';
 
     /**

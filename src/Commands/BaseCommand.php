@@ -12,7 +12,14 @@ use Services\Url;
  */
 class BaseCommand
 {
+    /**
+     * @var string
+     */
     const SUCCESS  = 'Success';
+
+    /**
+     * @var string
+     */
     const BAD_LINK = 'Bad link';
 
     /**

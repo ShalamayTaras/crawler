@@ -12,6 +12,9 @@ use Services\Url;
  */
 class Links
 {
+    /**
+     * @var string
+     */
     const PATTERN = '/<a.*?href="(?P<links>[^"]*)".*?\/?>/mi';
 
     /**
